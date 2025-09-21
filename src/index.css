@@ -1,0 +1,298 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* SkripsiMate Design System - Neumorphic Soft Blue & White
+All colors MUST be HSL for perfect neumorphic effects.
+*/
+
+@layer base {
+  :root {
+    /* Base Neumorphic Colors */
+    --background: 210 20% 98%;
+    --foreground: 222 84% 22%;
+
+    /* Neumorphic Surface Colors */
+    --neu-light: 0 0% 100%;
+    --neu-surface: 210 25% 97%;
+    --neu-shadow-light: 210 30% 90%;
+    --neu-shadow-dark: 0 0% 100%;
+    --neu-highlight: 0 0% 100%;
+
+    /* Primary Blue System */
+    --primary: 213 94% 68%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 213 86% 83%;
+    --primary-dark: 213 84% 53%;
+
+    /* Secondary Blue System */
+    --secondary: 213 100% 96%;
+    --secondary-foreground: 213 94% 28%;
+
+    /* Accent System */
+    --accent: 217 91% 60%;
+    --accent-foreground: 0 0% 100%;
+    --accent-light: 217 100% 85%;
+
+    /* Surface & UI */
+    --card: 0 0% 100%;
+    --card-foreground: 222 84% 22%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 84% 22%;
+
+    /* Muted & Text */
+    --muted: 213 100% 96%;
+    --muted-foreground: 215 16% 47%;
+    --text-soft: 215 20% 65%;
+
+    /* Interactive States */
+    --border: 213 27% 84%;
+    --input: 0 0% 100%;
+    --ring: 213 94% 68%;
+
+    /* Status Colors */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-dark)) 100%);
+    --gradient-surface: linear-gradient(135deg, hsl(var(--neu-light)) 0%, hsl(var(--neu-surface)) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(var(--neu-light)) 0%, hsl(var(--secondary)) 50%, hsl(var(--primary-light)) 100%);
+
+    /* Shadows - Neumorphic */
+    --shadow-neu: 8px 8px 16px hsl(var(--neu-shadow-light)), -8px -8px 16px hsl(var(--neu-highlight));
+    --shadow-neu-inset: inset 8px 8px 16px hsl(var(--neu-shadow-light)), inset -8px -8px 16px hsl(var(--neu-highlight));
+    --shadow-neu-soft: 4px 4px 8px hsl(var(--neu-shadow-light)), -4px -4px 8px hsl(var(--neu-highlight));
+    --shadow-neu-pressed: inset 4px 4px 8px hsl(var(--neu-shadow-light)), inset -4px -4px 8px hsl(var(--neu-highlight));
+    --shadow-neu-hover: 12px 12px 24px hsl(var(--neu-shadow-light)), -12px -12px 24px hsl(var(--neu-highlight));
+
+    /* Typography */
+    --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+    /* Spacing & Sizing */
+    --radius: 1rem;
+    --radius-lg: 1.5rem;
+    --radius-xl: 2rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-primary;
+    font-family: var(--font-primary);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-primary);
+  }
+
+  code, pre {
+    font-family: var(--font-mono);
+  }
+}
+
+@layer components {
+  /* Neumorphic Button Variants */
+  .btn-neu {
+    @apply bg-neu-light text-foreground transition-all duration-200 ease-out;
+    box-shadow: var(--shadow-neu);
+    border-radius: var(--radius);
+  }
+
+  .btn-neu:hover {
+    box-shadow: var(--shadow-neu-hover);
+    transform: translateY(-1px);
+  }
+
+  .btn-neu:active {
+    box-shadow: var(--shadow-neu-pressed);
+    transform: translateY(0);
+  }
+
+  .btn-neu-primary {
+    @apply bg-primary text-primary-foreground transition-all duration-200 ease-out;
+    box-shadow: var(--shadow-neu);
+    border-radius: var(--radius);
+  }
+
+  .btn-neu-primary:hover {
+    @apply bg-primary-dark;
+    box-shadow: var(--shadow-neu-hover);
+    transform: translateY(-1px);
+  }
+
+  .btn-neu-primary:active {
+    box-shadow: var(--shadow-neu-pressed);
+    transform: translateY(0);
+  }
+
+  /* Neumorphic Cards */
+  .card-neu {
+    @apply bg-neu-light border-0 transition-all duration-300 ease-out;
+    box-shadow: var(--shadow-neu);
+    border-radius: var(--radius-lg);
+  }
+
+  .card-neu:hover {
+    box-shadow: var(--shadow-neu-hover);
+    transform: translateY(-2px);
+  }
+
+  .card-neu-inset {
+    @apply bg-neu-surface border-0;
+    box-shadow: var(--shadow-neu-inset);
+    border-radius: var(--radius-lg);
+  }
+
+  /* Hero Gradient Background */
+  .bg-hero-gradient {
+    background: var(--gradient-hero);
+  }
+
+  .bg-surface-gradient {
+    background: var(--gradient-surface);
+  }
+
+  /* Neumorphic Input */
+  .input-neu {
+    @apply bg-input border-0 px-4 py-3 text-foreground placeholder:text-muted-foreground transition-all duration-200;
+    box-shadow: var(--shadow-neu-inset);
+    border-radius: var(--radius);
+  }
+
+  .input-neu:focus {
+    @apply outline-none ring-2 ring-primary/20;
+    box-shadow: var(--shadow-neu-inset), 0 0 0 2px hsl(var(--primary) / 0.2);
+  }
+
+  /* Animation Utilities */
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.3s ease-out forwards;
+  }
+
+  .animate-slide-in-left {
+    animation: slideInLeft 0.5s ease-out forwards;
+  }
+
+  .animate-slide-in-right {
+    animation: slideInRight 0.5s ease-out forwards;
+  }
+
+  /* Stagger Animation Delays */
+  .animate-delay-100 { animation-delay: 0.1s; }
+  .animate-delay-200 { animation-delay: 0.2s; }
+  .animate-delay-300 { animation-delay: 0.3s; }
+  .animate-delay-400 { animation-delay: 0.4s; }
+  .animate-delay-500 { animation-delay: 0.5s; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
