@@ -31,7 +31,7 @@ This project and everyone participating in it is governed by our Code of Conduct
 1. **Fork the repository**
    ```bash
    # Fork the repository on GitHub, then clone your fork
-   git clone https://github.com/YOUR_USERNAME/skripsimate-website.git
+   git clone https://github.com/XenchinRyu7/skripsimate-website.git
    cd skripsimate-website
    ```
 
