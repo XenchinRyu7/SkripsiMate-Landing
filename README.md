@@ -1,6 +1,6 @@
 # SkripsiMate Website
 
-A modern, responsive website for SkripsiMate - the AI-powered thesis planning desktop application. Built with React, TypeScript, and featuring a beautiful neumorphic design system.
+A modern, responsive website for SkripsiMate - the AI-powered thesis planning desktop application. Built with **Vite + React + TypeScript**, featuring a beautiful neumorphic design system.
 
 ## 🌟 Features
 
@@ -14,11 +14,11 @@ A modern, responsive website for SkripsiMate - the AI-powered thesis planning de
 ## 🚀 Tech Stack
 
 - **Frontend**: React 18, TypeScript
-- **Build Tool**: Vite
+- **Build Tool**: Vite (not Next.js!)
 - **Styling**: TailwindCSS with custom neumorphic design system
 - **UI Components**: shadcn/ui (Radix UI primitives)
 - **Icons**: Lucide React
-- **Routing**: React Router
+- **Routing**: React Router DOM
 - **State Management**: React Context API
 - **Fonts**: Inter & JetBrains Mono
 
