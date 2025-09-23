@@ -1,32 +1,40 @@
-import { Download as DownloadIcon, Monitor, Smartphone, HardDrive, Github, ExternalLink } from "lucide-react";
+import { Download as DownloadIcon, Monitor, Smartphone, HardDrive, Github, ExternalLink, Apple, Cpu } from "lucide-react";
 import { Button } from "@/components/ui/button";
+
+// GitHub Releases API URLs
+const GITHUB_REPO = "XenchinRyu7/SkripsiMate"; // Update dengan repo yang benar
+const LATEST_RELEASE_URL = `https://api.github.com/repos/${GITHUB_REPO}/releases/latest`;
+const RELEASES_URL = `https://github.com/${GITHUB_REPO}/releases`;
 
 const platforms = [
   {
     name: "Windows",
     icon: Monitor,
-    version: "v1.2.3",
-    size: "89.2 MB",
+    version: "v1.0.0",
+    size: "447 MB",
     requirements: "Windows 10 or later",
-    downloadUrl: "#",
+    downloadUrl: `${RELEASES_URL}/latest/download/SkripsiMate.Setup.1.0.0.exe`,
+    alternativeUrl: `${RELEASES_URL}/latest/download/SkripsiMate.1.0.0.exe`,
     primary: true
   },
   {
     name: "macOS",
-    icon: Monitor,
-    version: "v1.2.3",
-    size: "92.1 MB", 
+    icon: Apple,
+    version: "v1.0.0",
+    size: "382 MB / 193 MB", 
     requirements: "macOS 10.15 or later",
-    downloadUrl: "#",
+    downloadUrl: `${RELEASES_URL}/latest/download/SkripsiMate-1.0.0-arm64.dmg`,
+    alternativeUrl: `${RELEASES_URL}/latest/download/SkripsiMate-1.0.0.dmg`,
     primary: true
   },
   {
     name: "Linux",
-    icon: Monitor,
-    version: "v1.2.3",
-    size: "85.7 MB",
+    icon: Cpu,
+    version: "v1.0.0",
+    size: "202 MB",
     requirements: "Ubuntu 18.04+ / Fedora 32+",
-    downloadUrl: "#",
+    downloadUrl: `${RELEASES_URL}/latest/download/SkripsiMate-1.0.0.AppImage`,
+    alternativeUrl: `${RELEASES_URL}/latest/download/skripsimate_1.0.0_amd64.deb`,
     primary: true
   }
 ];
@@ -66,10 +74,29 @@ const Download = () => {
                 <div>{platform.requirements}</div>
               </div>
               
-              <Button className="btn-neu-primary w-full group-hover:scale-105 transition-transform">
-                <DownloadIcon className="w-4 h-4 mr-2" />
-                Download for {platform.name}
-              </Button>
+              <div className="space-y-2">
+                <Button 
+                  className="btn-neu-primary w-full group-hover:scale-105 transition-transform"
+                  asChild
+                >
+                  <a href={platform.downloadUrl} download>
+                    <DownloadIcon className="w-4 h-4 mr-2" />
+                    Download for {platform.name}
+                  </a>
+                </Button>
+                
+                {platform.alternativeUrl && (
+                  <Button 
+                    variant="outline" 
+                    className="btn-neu w-full text-xs"
+                    asChild
+                  >
+                    <a href={platform.alternativeUrl} download>
+                      Alternative Download
+                    </a>
+                  </Button>
+                )}
+              </div>
             </div>
           ))}
         </div>
@@ -137,31 +164,63 @@ const Download = () => {
           </div>
         </div>
 
-        {/* Alternative Downloads */}
-        <div className="text-center animate-fade-in-up animate-delay-500">
+        {/* All Downloads Section */}
+        <div className="text-center animate-fade-in-up animate-delay-500 mb-12">
           <div className="card-neu inline-block p-8 rounded-2xl">
-            <h3 className="text-xl font-bold mb-4">Alternative Downloads</h3>
+            <h3 className="text-xl font-bold mb-4">All Downloads & Resources</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+              <Button variant="outline" className="btn-neu" asChild>
+                <a href={`${RELEASES_URL}/latest/download/SkripsiMate.Setup.1.0.0.exe`} download>
+                  <DownloadIcon className="w-4 h-4 mr-2" />
+                  Windows Installer
+                </a>
+              </Button>
+              <Button variant="outline" className="btn-neu" asChild>
+                <a href={`${RELEASES_URL}/latest/download/SkripsiMate-1.0.0-arm64.dmg`} download>
+                  <DownloadIcon className="w-4 h-4 mr-2" />
+                  macOS ARM64
+                </a>
+              </Button>
+              <Button variant="outline" className="btn-neu" asChild>
+                <a href={`${RELEASES_URL}/latest/download/SkripsiMate-1.0.0.AppImage`} download>
+                  <DownloadIcon className="w-4 h-4 mr-2" />
+                  Linux AppImage
+                </a>
+              </Button>
+              <Button variant="outline" className="btn-neu" asChild>
+                <a href={`${RELEASES_URL}/latest/download/skripsimate_1.0.0_amd64.deb`} download>
+                  <DownloadIcon className="w-4 h-4 mr-2" />
+                  Linux DEB
+                </a>
+              </Button>
+            </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="outline" className="btn-neu">
-                <Github className="w-4 h-4 mr-2" />
-                Build from Source
+              <Button variant="outline" className="btn-neu" asChild>
+                <a href={`https://github.com/${GITHUB_REPO}`} target="_blank" rel="noopener noreferrer">
+                  <Github className="w-4 h-4 mr-2" />
+                  Source Code
+                </a>
               </Button>
-              <Button variant="outline" className="btn-neu">
-                <Smartphone className="w-4 h-4 mr-2" />
-                Docker Image
+              <Button variant="outline" className="btn-neu" asChild>
+                <a href={RELEASES_URL} target="_blank" rel="noopener noreferrer">
+                  <ExternalLink className="w-4 h-4 mr-2" />
+                  All Releases
+                </a>
               </Button>
-              <Button variant="outline" className="btn-neu">
-                <ExternalLink className="w-4 h-4 mr-2" />
-                Release Notes
+              <Button variant="outline" className="btn-neu" asChild>
+                <a href={`https://github.com/${GITHUB_REPO}/releases/latest`} target="_blank" rel="noopener noreferrer">
+                  <DownloadIcon className="w-4 h-4 mr-2" />
+                  Release Notes
+                </a>
               </Button>
             </div>
             <p className="text-sm text-muted-foreground mt-4">
               Need help with installation? Check our{" "}
-              <a href="#" className="text-primary hover:underline font-medium">
+              <a href="/docs" className="text-primary hover:underline font-medium">
                 documentation
               </a>{" "}
               or{" "}
-              <a href="#" className="text-primary hover:underline font-medium">
+              <a href="/community" className="text-primary hover:underline font-medium">
                 ask the community
               </a>
             </p>
